@@ -7,6 +7,41 @@ Object {
     <div>
       <div>
         <div
+          class="form-check"
+        >
+          <input
+            checked=""
+            class="form-check-input"
+            id="flexRadioDefault1"
+            name="flexRadioDefault"
+            type="radio"
+            value="new"
+          />
+          <label
+            class="form-check-label"
+            for="flexRadioDefault1"
+          >
+            New Questions
+          </label>
+        </div>
+        <div
+          class="form-check"
+        >
+          <input
+            class="form-check-input"
+            id="flexRadioDefault2"
+            name="flexRadioDefault"
+            type="radio"
+            value="old"
+          />
+          <label
+            class="form-check-label"
+            for="flexRadioDefault2"
+          >
+            Old Questions
+          </label>
+        </div>
+        <div
           class="allPolls"
         >
           <h2>
@@ -191,19 +226,46 @@ Object {
             </div>
           </div>
         </div>
-        <div>
-          <h2>
-            Done
-          </h2>
-          <div
-            class="oldDiv"
-          />
-        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div>
+      <div
+        class="form-check"
+      >
+        <input
+          checked=""
+          class="form-check-input"
+          id="flexRadioDefault1"
+          name="flexRadioDefault"
+          type="radio"
+          value="new"
+        />
+        <label
+          class="form-check-label"
+          for="flexRadioDefault1"
+        >
+          New Questions
+        </label>
+      </div>
+      <div
+        class="form-check"
+      >
+        <input
+          class="form-check-input"
+          id="flexRadioDefault2"
+          name="flexRadioDefault"
+          type="radio"
+          value="old"
+        />
+        <label
+          class="form-check-label"
+          for="flexRadioDefault2"
+        >
+          Old Questions
+        </label>
+      </div>
       <div
         class="allPolls"
       >
@@ -388,14 +450,6 @@ Object {
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <h2>
-          Done
-        </h2>
-        <div
-          class="oldDiv"
-        />
       </div>
     </div>
   </div>,

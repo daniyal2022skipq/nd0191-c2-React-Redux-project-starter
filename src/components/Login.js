@@ -6,8 +6,8 @@ import { login } from "../slices/authSlice";
 function Login(props) {
   const [nameError, setNameError] = useState("");
   const [passError, setPassError] = useState("");
-  const [name, setName] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
 const authUser=useSelector(state=>state.auth.authUser)
 const dispatch = useDispatch();
 const usersList = useSelector((state) => state.user.users);
