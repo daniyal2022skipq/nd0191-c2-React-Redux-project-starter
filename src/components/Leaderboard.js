@@ -1,6 +1,5 @@
 import Table from "react-bootstrap/Table";
 import { useSelector } from "react-redux";
-import Navbar from "./Navbar/Navbar";
 const Leaderboard = () => {
   const usersList = useSelector((state) => state.user.users);
   const userRanking = Object.keys(usersList)
@@ -17,7 +16,6 @@ const Leaderboard = () => {
     });
   return (
     <>
-      <Navbar />
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>

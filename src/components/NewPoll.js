@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { questionThunk } from "../slices/questionSlice";
-import Navbar from "./Navbar/Navbar";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -26,7 +25,6 @@ const NewPoll = () => {
 
   return (
     <>
-      <Navbar />
       <h1>New Poll</h1>
       <Form onSubmit={handleNewPoll}>
         <Form.Group className="mb-3" controlId="formBasicEmail">

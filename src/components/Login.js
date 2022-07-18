@@ -1,17 +1,21 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import { login } from "../slices/authSlice";
 function Login(props) {
   const [nameError, setNameError] = useState("");
   const [passError, setPassError] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
-  const usersList = useSelector((state) => state.user.users);
-  const navigate = useNavigate();
-
+  const [name, setName] = useState("sarahedo");
+  const [password, setPassword] = useState("password123");
+const authUser=useSelector(state=>state.auth.authUser)
+const dispatch = useDispatch();
+const usersList = useSelector((state) => state.user.users);
+if (authUser) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectUrl = urlParams.get('redirectTo');
+    return <Navigate to={redirectUrl ? redirectUrl : "/dashboard"}/>;
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (usersList[name] === undefined) {
@@ -26,9 +30,10 @@ function Login(props) {
     }
     if (usersList[name].password === password) {
       dispatch(login(name));
-      navigate("/dashboard");
     }
   };
+
+
   return (
     <div className="Auth-form-container">
       <form className="Auth-form" onSubmit={handleSubmit}>

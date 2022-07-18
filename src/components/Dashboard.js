@@ -1,4 +1,3 @@
-import Navbar from "./Navbar/Navbar";
 import Polls from "./Polls";
 import { BallTriangle} from "react-loader-spinner";
 import { useSelector } from "react-redux";
@@ -13,7 +12,6 @@ function Dashboard(props) {
           <BallTriangle />
         </div>
       )}
-      {!isLoadingAnswer && !isLoading && <Navbar />}
       {!isLoading && !isLoadingAnswer && <Polls />}
     </div>
   );

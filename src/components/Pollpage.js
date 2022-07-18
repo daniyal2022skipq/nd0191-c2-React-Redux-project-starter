@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams ,Navigate} from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { answerThunk } from "../slices/answerSlice";
-import Navbar from "./Navbar/Navbar";
 
 const Pollpage = () => {
   const dispatch = useDispatch();
@@ -13,6 +12,9 @@ const Pollpage = () => {
   const authUser = useSelector((state) => state.auth.authUser);
   const users = useSelector((state) => state.user.users);
   const questions = useSelector((state) => state.question.allQuestions);
+  if (!authUser || !questions[question_id] ) {
+    return <Navigate to="/404"/>;
+}
   const buttonhandlerOne = () => {
     const obj = { qid: question_id, authedUser: authUser, answer: "optionOne" };
 
@@ -31,7 +33,6 @@ const Pollpage = () => {
 
   return (
     <div>
-      <Navbar />
       <Card
         style={{
           width: "30rem",
