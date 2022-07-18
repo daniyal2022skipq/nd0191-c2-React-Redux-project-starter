@@ -3,10 +3,10 @@ let users = {
     id: 'sarahedo',
     password:'password123',
     name: 'Sarah Edo',
-    avatarURL: null,
+    avatarURL: 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?t=st=1657795176~exp=1657795776~hmac=6042db2b97f05e44e5e14a3ab210cd1685d929777cf37a3a4aa25fcc3cbacf33&w=826',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne',
+      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
       "am8ehyc8byjqgar0jgpub9": 'optionTwo',
       "loxhs1bqm25b708cmbf3g": 'optionTwo'
     },
@@ -16,7 +16,7 @@ let users = {
     id: 'tylermcginnis',
     password:'abc321',
     name: 'Tyler McGinnis',
-    avatarURL: null,
+    avatarURL: 'https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg?w=826&t=st=1657799167~exp=1657799767~hmac=c1cbdd88932e07e6fcc74ea2b439f3753450185c273062f3647a9e37472d2579',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -27,7 +27,7 @@ let users = {
     id: 'mtsamis',
     password:'xyz123',
     name: 'Mike Tsamis',
-    avatarURL: null,
+    avatarURL: 'https://cdn-icons-png.flaticon.com/512/906/906517.png?w=826&t=st=1657799200~exp=1657799800~hmac=20bd50505bd74d5b031492d5ec069dde6ccab1df5dc68780fff92f18e077fb39',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -39,7 +39,7 @@ let users = {
     id: 'zoshikanlu',
     password:'pass246',
     name: 'Zenobia Oshikanlu',
-    avatarURL: null,
+    avatarURL: 'https://img.freepik.com/free-vector/farmer-using-agricultural-technology_53876-120543.jpg?t=st=1657795176~exp=1657795776~hmac=12fb67b105b3b9ea13ce5e3629fa50d19910431e3a3ec685c00d21f173b7d738&w=826',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },
@@ -144,7 +144,7 @@ export function _getQuestions () {
   })
 }
 
-function formatQuestion ({ optionOneText, optionTwoText, author }) {
+export function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -178,31 +178,31 @@ export function _saveQuestion (question) {
   })
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer (answer) {
   return new Promise((resolve, reject) => {
-    if (!authedUser || !qid || !answer) {
+    if (!answer.authedUser || !answer.qid || !answer.answer) {
       reject("Please provide authedUser, qid, and answer");
     }
 
     setTimeout(() => {
       users = {
         ...users,
-        [authedUser]: {
-          ...users[authedUser],
+        [answer.authedUser]: {
+          ...users[answer.authedUser],
           answers: {
-            ...users[authedUser].answers,
-            [qid]: answer
+            ...users[answer.authedUser].answers,
+            [answer.qid]: answer.answer
           }
         }
       }
 
       questions = {
         ...questions,
-        [qid]: {
-          ...questions[qid],
-          [answer]: {
-            ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser])
+        [answer.qid]: {
+          ...questions[answer.qid],
+          [answer.answer]: {
+            ...questions[answer.qid][answer.answer],
+            votes: questions[answer.qid][answer.answer].votes.concat([answer.authedUser])
           }
         }
       }
@@ -211,3 +211,5 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     }, 500)
   })
 }
+export const userstate=users
+export const questionstate=questions
